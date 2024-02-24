@@ -1,6 +1,6 @@
-# GNU Windows Extension
+# Vorbis
 
-This template helps a lot in building docs and understanding GNU Windows Extension source code, build and other related documents
+The Vorbis Tools package contains command-line tools useful for encoding, playing or editing files using the Ogg CODEC.
 
 ## Build this library
 
@@ -17,7 +17,7 @@ To build this library, you will need:
 Just run the  following commands in a terminal window to get started:
 
 ```cmd
-build.bat
+build.cmd
 ```
 
-Once it's done, you can see your bin. You can then paste it into your GNU Windows installation folder.
+Once it's done, you can see your folder `.bin`. You can then paste it into your GNU Windows installation folder.
