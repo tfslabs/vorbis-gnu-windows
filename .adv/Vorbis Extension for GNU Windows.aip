@@ -5,6 +5,8 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="AI_PREDEF_LCONDS_PROPS" Value="AI_DETECTED_PHYSICAL_MEMORY"/>
+    <ROW Property="AI_REQUIRED_PHYSICAL_MEMORY" MultiBuildValue="DefaultBuild:512" ValueLocId="-"/>
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="Vorbis Extension for GNU Development Kits for Windows (64-bit)" ValueLocId="*"/>
     <ROW Property="ARPCONTACT" Value="welcome.tfs@outlook.com"/>
@@ -12,7 +14,9 @@
     <ROW Property="ARPPRODUCTICON" Value="gnuwindows.exe" Type="8"/>
     <ROW Property="ARPURLINFOABOUT" Value="https://github.com/tfslabs/vorbis-gnu-windows/"/>
     <ROW Property="ARPURLUPDATEINFO" Value="https://github.com/tfslabs/vorbis-gnu-windows/commits/master/"/>
+    <ROW Property="MSIFASTINSTALL" MultiBuildValue="DefaultBuild:5"/>
     <ROW Property="Manufacturer" Value="TheFlightSims"/>
+    <ROW Property="MsiLogging" MultiBuildValue="DefaultBuild:vp"/>
     <ROW Property="ProductCode" Value="1033:{B86CE19C-C044-4E30-B326-B8E9FA484947} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Vorbis Extension for GNU Windows"/>
@@ -21,6 +25,7 @@
     <ROW Property="UpgradeCode" Value="{A0E41544-8A14-4EA5-9340-5EED541446BA}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
     <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT" MultiBuildValue="DefaultBuild:Windows 9x/ME/NT/2000/XP/Vista/Windows 7/Windows 8 x86/Windows 8.1 x86/Windows 10 x86" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT50" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
@@ -29,11 +34,13 @@
     <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT60" MultiBuildValue="DefaultBuild:Windows Vista/Server 2008" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT60Display" MultiBuildValue="DefaultBuild:Windows Vista/Server 2008" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNTDisplay" MultiBuildValue="DefaultBuild:32-bit Windows versions" ValueLocId="-"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
     <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
     <ROW Directory="Vorbis_Dir" Directory_Parent="cmake_Dir" DefaultDir="Vorbis"/>
+    <ROW Directory="bin_Dir" Directory_Parent="APPDIR" DefaultDir="bin"/>
     <ROW Directory="cmake_Dir" Directory_Parent="lib_Dir" DefaultDir="cmake"/>
     <ROW Directory="include_Dir" Directory_Parent="APPDIR" DefaultDir="include"/>
     <ROW Directory="lib_Dir" Directory_Parent="APPDIR" DefaultDir="lib"/>
@@ -42,27 +49,36 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
     <ROW Component="APPDIR" ComponentId="{32173829-F5D1-40B0-A4FC-7DC3B1CCB402}" Directory_="APPDIR" Attributes="0"/>
-    <ROW Component="ProductInformation" ComponentId="{512F9C26-2191-461A-98C2-0CBDA378E3FC}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
-    <ROW Component="VorbisConfig.cmake" ComponentId="{07733340-A86B-4E74-9761-72EEB4C52689}" Directory_="Vorbis_Dir" Attributes="0" KeyPath="VorbisConfig.cmake" Type="0"/>
-    <ROW Component="codec.h" ComponentId="{9C69DC5C-C492-4575-A72D-E684D143EE74}" Directory_="vorbis_Dir" Attributes="0" KeyPath="codec.h" Type="0"/>
-    <ROW Component="libvorbis.a" ComponentId="{9CBA7DBF-ED45-4E67-AA67-F15A0E4A7390}" Directory_="lib_Dir" Attributes="0" KeyPath="libvorbis.a" Type="0"/>
-    <ROW Component="vorbis.pc" ComponentId="{7F60D9B9-5554-42E1-BA8C-DE1F0A5647F5}" Directory_="pkgconfig_Dir" Attributes="0" KeyPath="vorbis.pc" Type="0"/>
+    <ROW Component="Path" ComponentId="{0DCD1621-C64F-4998-B321-364C7F24C1E3}" Directory_="APPDIR" Attributes="260" KeyPath="Path"/>
+    <ROW Component="Software" ComponentId="{ADDE91F1-9CD0-437F-8BAF-B58894DF5020}" Directory_="APPDIR" Attributes="260" KeyPath="Software"/>
+    <ROW Component="TheFlightSims" ComponentId="{B7C82AF7-E1CE-4392-9B29-B6F38175858B}" Directory_="APPDIR" Attributes="260" KeyPath="TheFlightSims"/>
+    <ROW Component="Version" ComponentId="{ABA90EF0-5D4F-410E-A3BB-BFBABB9BE948}" Directory_="APPDIR" Attributes="260" KeyPath="Version"/>
+    <ROW Component="VorbisConfig.cmake" ComponentId="{257C2351-5EE0-41F4-A7D3-B7EF47ADB85F}" Directory_="Vorbis_Dir" Attributes="0" KeyPath="VorbisConfig.cmake" Type="0"/>
+    <ROW Component="codec.h" ComponentId="{2CE40E4E-9190-431F-ACD6-7757F32D6352}" Directory_="vorbis_Dir" Attributes="0" KeyPath="codec.h" Type="0"/>
+    <ROW Component="libvorbis.dll" ComponentId="{1E34891C-21A9-4BBC-9FB6-DA80C03535DA}" Directory_="bin_Dir" Attributes="256" KeyPath="libvorbis.dll"/>
+    <ROW Component="libvorbis.dll.a" ComponentId="{3618BA65-CD9B-43B3-A7BB-E0E07846F36C}" Directory_="lib_Dir" Attributes="0" KeyPath="libvorbis.dll.a" Type="0"/>
+    <ROW Component="libvorbisenc.dll" ComponentId="{D50C17A5-623A-4FAF-B1E8-C25CD88D450E}" Directory_="bin_Dir" Attributes="256" KeyPath="libvorbisenc.dll"/>
+    <ROW Component="libvorbisfile.dll" ComponentId="{9B81F4D1-3F94-4FB8-8BDC-538BE8A7C7CF}" Directory_="bin_Dir" Attributes="256" KeyPath="libvorbisfile.dll"/>
+    <ROW Component="vorbis.pc" ComponentId="{E5D19184-370A-4499-A3EE-B3F1CC5EF890}" Directory_="pkgconfig_Dir" Attributes="0" KeyPath="vorbis.pc" Type="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="libvorbis.dll" Component_="libvorbis.dll" FileName="LIBVOR~1.DLL|libvorbis.dll" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\bin\libvorbis.dll" SelfReg="false"/>
+    <ROW File="libvorbisenc.dll" Component_="libvorbisenc.dll" FileName="LIBVOR~2.DLL|libvorbisenc.dll" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\bin\libvorbisenc.dll" SelfReg="false"/>
+    <ROW File="libvorbisfile.dll" Component_="libvorbisfile.dll" FileName="LIBVOR~3.DLL|libvorbisfile.dll" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\bin\libvorbisfile.dll" SelfReg="false"/>
     <ROW File="codec.h" Component_="codec.h" FileName="codec.h" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\include\vorbis\codec.h" SelfReg="false"/>
     <ROW File="vorbisenc.h" Component_="codec.h" FileName="VORBIS~1.H|vorbisenc.h" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\include\vorbis\vorbisenc.h" SelfReg="false"/>
     <ROW File="vorbisfile.h" Component_="codec.h" FileName="VORBIS~2.H|vorbisfile.h" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\include\vorbis\vorbisfile.h" SelfReg="false"/>
     <ROW File="VorbisConfig.cmake" Component_="VorbisConfig.cmake" FileName="VORBIS~1.CMA|VorbisConfig.cmake" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\lib\cmake\Vorbis\VorbisConfig.cmake" SelfReg="false"/>
     <ROW File="VorbisConfigVersion.cmake" Component_="VorbisConfig.cmake" FileName="VORBIS~2.CMA|VorbisConfigVersion.cmake" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\lib\cmake\Vorbis\VorbisConfigVersion.cmake" SelfReg="false"/>
-    <ROW File="VorbisTargetsnoconfig.cmake" Component_="VorbisConfig.cmake" FileName="VORBIS~3.CMA|VorbisTargets-noconfig.cmake" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\lib\cmake\Vorbis\VorbisTargets-noconfig.cmake" SelfReg="false"/>
+    <ROW File="VorbisTargetsrelease.cmake" Component_="VorbisConfig.cmake" FileName="VORBIS~3.CMA|VorbisTargets-release.cmake" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\lib\cmake\Vorbis\VorbisTargets-release.cmake" SelfReg="false"/>
     <ROW File="VorbisTargets.cmake" Component_="VorbisConfig.cmake" FileName="VORBIS~4.CMA|VorbisTargets.cmake" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\lib\cmake\Vorbis\VorbisTargets.cmake" SelfReg="false"/>
-    <ROW File="libvorbis.a" Component_="libvorbis.a" FileName="LIBVOR~1.A|libvorbis.a" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\lib\libvorbis.a" SelfReg="false"/>
-    <ROW File="libvorbisenc.a" Component_="libvorbis.a" FileName="LIBVOR~2.A|libvorbisenc.a" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\lib\libvorbisenc.a" SelfReg="false"/>
-    <ROW File="libvorbisfile.a" Component_="libvorbis.a" FileName="LIBVOR~3.A|libvorbisfile.a" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\lib\libvorbisfile.a" SelfReg="false"/>
+    <ROW File="libvorbis.dll.a" Component_="libvorbis.dll.a" FileName="LIBVOR~1.A|libvorbis.dll.a" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\lib\libvorbis.dll.a" SelfReg="false"/>
+    <ROW File="libvorbisenc.dll.a" Component_="libvorbis.dll.a" FileName="LIBVOR~2.A|libvorbisenc.dll.a" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\lib\libvorbisenc.dll.a" SelfReg="false"/>
+    <ROW File="libvorbisfile.dll.a" Component_="libvorbis.dll.a" FileName="LIBVOR~3.A|libvorbisfile.dll.a" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\lib\libvorbisfile.dll.a" SelfReg="false"/>
     <ROW File="vorbis.pc" Component_="vorbis.pc" FileName="vorbis.pc" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\lib\pkgconfig\vorbis.pc" SelfReg="false"/>
     <ROW File="vorbisenc.pc" Component_="vorbis.pc" FileName="VORBIS~1.PC|vorbisenc.pc" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\lib\pkgconfig\vorbisenc.pc" SelfReg="false"/>
     <ROW File="vorbisfile.pc" Component_="vorbis.pc" FileName="VORBIS~2.PC|vorbisfile.pc" Attributes="0" SourcePath="..\..\.prepare-for-release\vorbis\lib\pkgconfig\vorbisfile.pc" SelfReg="false"/>
@@ -70,8 +86,11 @@
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
   </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrapperUISequenceComponent">
+    <ROW Action="AI_DetectSoftware" Sequence="151"/>
+  </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
-    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" Languages="en" InstallationType="4" UseLargeSchema="true"/>
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" Languages="en" InstallationType="4" SummInfoMetadata="Page Count:450" UseLargeSchema="true" MsiPackageType="x64"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
     <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
@@ -93,6 +112,7 @@
     <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\WelcomeDlg.aip"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="SoftwareDetector.dll" SourcePath="&lt;AI_CUSTACTS&gt;SoftwareDetector.dll"/>
     <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
@@ -124,6 +144,7 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DetectSoftware" Type="257" Source="SoftwareDetector.dll" Target="OnDetectSoftware"/>
     <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
     <ROW Action="AI_EnableDebugLog" Type="321" Source="aicustact.dll" Target="EnableDebugLog"/>
     <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
@@ -133,17 +154,23 @@
     <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
     <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
     <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
-    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
-    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[ProgramFiles64Folder]\GNU Windows"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]" MultiBuildTarget="DefaultBuild:[ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
     <ROW Feature_="MainFeature" Component_="APPDIR"/>
-    <ROW Feature_="MainFeature" Component_="ProductInformation"/>
+    <ROW Feature_="MainFeature" Component_="libvorbis.dll"/>
+    <ROW Feature_="MainFeature" Component_="libvorbisenc.dll"/>
+    <ROW Feature_="MainFeature" Component_="libvorbisfile.dll"/>
     <ROW Feature_="MainFeature" Component_="codec.h"/>
     <ROW Feature_="MainFeature" Component_="VorbisConfig.cmake"/>
-    <ROW Feature_="MainFeature" Component_="libvorbis.a"/>
+    <ROW Feature_="MainFeature" Component_="libvorbis.dll.a"/>
     <ROW Feature_="MainFeature" Component_="vorbis.pc"/>
+    <ROW Feature_="MainFeature" Component_="Software"/>
+    <ROW Feature_="MainFeature" Component_="TheFlightSims"/>
+    <ROW Feature_="MainFeature" Component_="Path"/>
+    <ROW Feature_="MainFeature" Component_="Version"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="gnuwindows.exe" SourcePath="..\..\.prepare-for-release\gnu-windows.ico" Index="0"/>
@@ -155,6 +182,7 @@
     <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
     <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
     <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+    <ROW Action="AI_DetectSoftware" Sequence="101"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_PRESERVE_INSTALL_TYPE" Sequence="199"/>
@@ -162,20 +190,24 @@
     <ROW Action="AI_ResolveKnownFolders" Sequence="53"/>
     <ROW Action="AI_DpiContentScale" Sequence="52"/>
     <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+    <ROW Action="AI_DetectSoftware" Sequence="101"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="( Version9X OR VersionNT64 )" Description="[ProductName] cannot be installed on [WindowsTypeNTDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="(VersionNT &lt;&gt; 500)" Description="[ProductName] cannot be installed on [WindowsTypeNT50Display]." DescriptionLocId="AI.LaunchCondition.NoNT50" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="(VersionNT &lt;&gt; 600)" Description="[ProductName] cannot be installed on [WindowsTypeNT60Display]." DescriptionLocId="AI.LaunchCondition.NoNT60" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="AI_DETECTED_PHYSICAL_MEMORY &gt;= AI_REQUIRED_PHYSICAL_MEMORY" Description="[ProductName] cannot be installed on systems with less physical memory than [AI_REQUIRED_PHYSICAL_MEMORY] MB." DescriptionLocId="AI.LaunchCondition.RAM" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT &gt;= 601 AND VersionNT64" Description="Windows 7, Windows 8/Server 2012 or later, with 64-bit&#9;"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
-    <ROW Registry="Manufacturer" Root="-1" Key="Software\[Manufacturer]" Name="\"/>
-    <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
-    <ROW Registry="ProductName" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="\"/>
-    <ROW Registry="Software" Root="-1" Key="Software" Name="\"/>
-    <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+    <ROW Registry="DynamicLinkingExtensionforGNUWindow" Root="2" Key="Software\TheFlightSims\Vorbis Extension for GNU Windows" Name="\"/>
+    <ROW Registry="Path" Root="2" Key="Software\TheFlightSims\Vorbis Extension for GNU Windows" Name="Path" Value="[APPDIR]" Component_="Path"/>
+    <ROW Registry="Software" Root="2" Key="Software" Name="+" Component_="Software"/>
+    <ROW Registry="TheFlightSims" Root="2" Key="Software\TheFlightSims" Name="+" Component_="TheFlightSims"/>
+    <ROW Registry="Version" Root="2" Key="Software\TheFlightSims\Vorbis Extension for GNU Windows" Name="Version" Value="[ProductVersion]" Component_="Version"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
     <ATTRIBUTE name="UsedTheme" value="classic"/>
