@@ -240,6 +240,7 @@ tmptest.dll
 
 
 # Ignore build folders
+.adv
 .bin
 .build
 .cmake
