@@ -14,6 +14,10 @@ To build this library, you will need:
 >
 > Make sure you can run `make`, `gcc`  and `g++` from the command line without any issues.
 
+Additionally, you may need to install these libraries as the minimum requirements:
+
+* [OGG Extension](https://github.com/tfslabs/ogg-gnu-windows)
+
 Just run the  following commands in a terminal window to get started:
 
 ```cmd
